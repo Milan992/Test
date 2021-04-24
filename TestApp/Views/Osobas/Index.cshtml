@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table id="osobas">
+    <tr>
+        <th>Ime</th>
+    </tr>
+</table>
+
+    <script>
+const { json } = require("modernizr");
+
+
+        $(document).ready(function () {
+            $("#osobas").DataTable({
+                ajax: {
+                    type: GET,
+                    datatype: json,
+                    url: "/api/osobas",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "ime"
+                    },
+                    {
+                        data: "id"
+                    }
+                ]
+            });
+
+        });
+    </script>
+
+
